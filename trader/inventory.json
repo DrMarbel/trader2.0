@@ -1,0 +1,85 @@
+{
+  "Inventory": [
+    {
+      "name": "Wheat Bundle",
+      "baseValue": 1,
+      "rarity": "Common",
+      "regionCategories": [ "Temperate", "Grasslands" ]
+    },
+    {
+      "name": "Iron Ore",
+      "baseValue": 10,
+      "rarity": "Common",
+      "regionCategories": [ "Mountainous", "Highland" ]
+    },
+    {
+      "name": "Silver Ore",
+      "baseValue": 50,
+      "rarity": "Uncommon",
+      "regionCategories": [ "Mountainous", "Caves" ]
+    },
+    {
+      "name": "Gold Ore",
+      "baseValue": 100,
+      "rarity": "Rare",
+      "regionCategories": [ "Mountainous", "Riverbeds" ]
+    },
+    {
+      "name": "Coal",
+      "baseValue": 5,
+      "rarity": "Common",
+      "regionCategories": [ "Forests", "Mountainous" ]
+    },
+    {
+      "name": "Timber",
+      "baseValue": 3,
+      "rarity": "Common",
+      "regionCategories": [ "Temperate", "Rainforests", "Woodlands" ]
+    },
+    {
+      "name": "Cotton",
+      "baseValue": 2,
+      "rarity": "Common",
+      "regionCategories": [ "Arid", "Savannas" ]
+    },
+    {
+      "name": "Leather",
+      "baseValue": 7,
+      "rarity": "Common",
+      "regionCategories": [ "Grasslands", "Farmlands" ]
+    },
+    {
+      "name": "Salt",
+      "baseValue": 15,
+      "rarity": "Uncommon",
+      "regionCategories": [ "Coastal", "Salt Mines" ]
+    },
+    {
+      "name": "Stone",
+      "baseValue": 1,
+      "rarity": "Common",
+      "regionCategories": [ "All Regions" ]
+    },
+    {
+      "name": "Glass (from Sand)",
+      "baseValue": 20,
+      "rarity": "Uncommon",
+      "regionCategories": [ "Deserts", "Coastal" ]
+    },
+    {
+      "name": "Spices",
+      "baseValue": 30,
+      "rarity": "Rare",
+      "regionCategories": [ "Tropical", "Coastal" ]
+    }
+  ],
+  "RegionCategories": {
+    "Temperate": [ "Temperate Zones", "Plains", "Grasslands", "Fertile Valleys" ],
+    "Arid": [ "Arid Regions", "Semi-Arid Zones", "Savannas" ],
+    "Tropical": [ "Tropical Jungles", "Coastal Tropics" ],
+    "Mountainous": [ "Mountain Passes", "Highland Cliffs", "Rocky Mountains" ],
+    "Forests": [ "Temperate Forests", "Rainforests", "Woodlands" ],
+    "Coastal": [ "Coastal Areas", "Salt Mines", "Deserts" ],
+    "All Regions": [ "All" ]
+  }
+}
