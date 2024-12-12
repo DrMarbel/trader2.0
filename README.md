@@ -4,3 +4,4 @@ This is a text-based sandbox tycoon simulator where you can nearly do whatever y
 Running Patch Notes:
   * Initial Upload (12.07.24)
   * Buy/Sell Mechanic Introduced (12.09.24)
+  * Dynamic Inventory Loading via JSON (12.11.24)
