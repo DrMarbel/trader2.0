@@ -5,8 +5,38 @@
 #include "good.h"
 
 // Constructor
-Merchant::Merchant(std::string merchantName, int initialFunds)
-    : name(merchantName), purse(initialFunds) {}
+Merchant::Merchant(std::string merchantName, int initialFunds, std::vector<std::string> regions, std::string prof) :
+    name(merchantName), purse(initialFunds), tradeRegions(regions), profession(prof) {}
+
+bool Merchant::isRegionValid(const std::string& region) const {
+    return std::any_of(tradeRegions.begin(), tradeRegions.end(), [&](const std::string& vr) { return vr == region; });
+}
+
+// Definition of getAvailableGoods (in the .cpp file!)
+std::vector<Good> getAvailableGoods(const Merchant& merchant, const std::vector<Good>& allGoods) {
+    std::vector<Good> availableGoods;
+
+    for (const auto& good : allGoods) {
+        if (merchant.isRegionValid("All Regions")) {
+            availableGoods.push_back(good);
+            continue;
+        }
+        for (const auto& region : good.availableInRegions) {
+            if (merchant.isRegionValid(region)) {
+                if (merchant.profession == "Armorer") {
+                    availableGoods.push_back(good);
+                    break;
+                }
+                else if (good.rarity != "Uncommon" && good.rarity != "Rare") {
+                    availableGoods.push_back(good);
+                    break;
+                }
+            }
+        }
+    }
+
+    return availableGoods;
+}
 
 // Used for in-trade viewing
 void Merchant::displayGoods() {
@@ -33,8 +63,15 @@ void Merchant::checkGoods() {
 }
 
 // Method to add goods to the inventory
-void Merchant::addGood(const std::string& itemName, int price, int quantity) {
-    inventory[itemName] = Good(itemName, price, quantity); // Directly creating Good object
+void Merchant::addGood(const Good& good, int quantity) {
+    if (inventory.count(good.name)) {
+        inventory[good.name].quantity += quantity;
+    }
+    else {
+        Good newGood = good;
+        newGood.quantity = quantity;
+        inventory[good.name] = newGood;
+    }
 }
 
 // Buy goods from the merchant

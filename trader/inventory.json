@@ -52,7 +52,7 @@
       "name": "Salt",
       "baseValue": 15,
       "rarity": "Uncommon",
-      "regionCategories": [ "Coastal", "Salt Mines" ]
+      "regionCategories": [ "Coastal", "Salt Fields" ]
     },
     {
       "name": "Stone",
@@ -61,7 +61,7 @@
       "regionCategories": [ "All Regions" ]
     },
     {
-      "name": "Glass (from Sand)",
+      "name": "Glass",
       "baseValue": 20,
       "rarity": "Uncommon",
       "regionCategories": [ "Deserts", "Coastal" ]
@@ -79,7 +79,7 @@
     "Tropical": [ "Tropical Jungles", "Coastal Tropics" ],
     "Mountainous": [ "Mountain Passes", "Highland Cliffs", "Rocky Mountains" ],
     "Forests": [ "Temperate Forests", "Rainforests", "Woodlands" ],
-    "Coastal": [ "Coastal Areas", "Salt Mines", "Deserts" ],
+    "Coastal": [ "Coastal Areas", "Salt Fields", "Deserts" ],
     "All Regions": [ "All" ]
   }
 }

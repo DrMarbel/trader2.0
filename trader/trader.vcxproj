@@ -130,12 +130,14 @@
     <ClCompile Include="merchant.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="smith.cpp" />
     <ClCompile Include="trader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="good.h" />
     <ClInclude Include="merchant.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="smith.h" />
     <ClInclude Include="trader.h" />
   </ItemGroup>
   <ItemGroup>

@@ -4,21 +4,20 @@
 * Date Started: 12/07/24
 * 
 * Notes:
-* Can Trade with Merric
-* Started a dynamic inventory system
+* Dynamic Inventory Loading via JSON completed
 */
 
 #include <iostream>
 #include <string>
 #include <vector>
-#include <map>
-#include <iomanip> // For formatted output
-
-// ----- Structs and Classes -----
 #include "merchant.h"
 #include "good.h"
 #include "player.h"
 #include "trader.h"
+#include "fstream"
+#include <nlohmann/json.hpp>
+
+using json = nlohmann::json;
 
 // ----- Game Function -----
 void trade(Player& player, Merchant& merchant) {
@@ -93,31 +92,66 @@ void trade(Player& player, Merchant& merchant) {
     }
 }
 
-// ----- Main Function -----
-int main()
-{
+std::vector<Good> loadGoodsFromJson(const std::string& filename) {
+    std::vector<Good> goods;
+    std::ifstream file(filename);
+
+    if (!file.is_open()) {
+        std::cerr << "Error opening file: " << filename << std::endl;
+        return goods; // Return empty vector on error
+    }
+
+    try {
+        json data = json::parse(file);
+
+        for (const auto& item : data["Inventory"]) {
+            std::string name = item["name"];
+            int baseValue = item["baseValue"];
+            std::string rarity = item["rarity"];
+
+            std::vector<std::string> regions;
+            for (const auto& region : item["regionCategories"]) {
+                regions.push_back(region);
+            }
+
+            goods.emplace_back(name, baseValue, 0, rarity, regions);
+        }
+    }
+    catch (const json::parse_error& e) {
+        std::cerr << "JSON parse error: " << e.what() << std::endl;
+    }
+    catch (const json::type_error& e) {
+        std::cerr << "JSON type error: " << e.what() << std::endl;
+    }
+
+    return goods;
+}
+
+int main() {
     std::cout << "Welcome to the Fantasy Trade Tycoon!\n";
 
-    // Create player
+    std::vector<Good> loadedGoods = loadGoodsFromJson("inventory.json");
+
+    if (loadedGoods.empty()) {
+        std::cerr << "Failed to load goods. Exiting.\n";
+        return 1;
+    }
+
     std::string playerName;
     std::cout << "Enter your character's name: ";
     std::getline(std::cin, playerName);
 
     Player player(playerName);
-    Trader trader("Merric");
 
-    // Hardcoding items into Merric's inventory
-    trader.addGood("Elven Bread", 5, 15);
-    trader.addGood("Dwarven Forge Steel", 50, 5);
-    trader.addGood("Dragon Scale", 200, 2);
-    trader.addGood("Healing Potion", 20, 10);
-    trader.addGood("Mana Crystal", 75, 4);
-    trader.addGood("Silk of Arachnia", 30, 7);
-    trader.addGood("Shadowroot Herb", 10, 12);
-    trader.addGood("Griffin Feather", 25, 8);
-    trader.addGood("Obsidian Trinket", 60, 3);
-    trader.addGood("Phoenix Ash", 500, 1);
-    trader.addGood("Isabian Cheese Wheel", 3000, 1);
+    Trader merric("Merric", 250);
+
+    std::vector<Good> availableToMerric = getAvailableGoods(merric, loadedGoods);
+
+    for (const auto& good : availableToMerric) {
+        merric.addGood(good, 5);
+    }
+
+    merric.displayGoods();
 
     // Game Loop
     while (true)
@@ -139,7 +173,7 @@ int main()
             player.checkGoods();
             break;
         case 2:
-            trade(player, trader);
+            trade(player, merric);
             break;
         case 3:
             std::cout << "Thanks for playing! Goodbye.\n";

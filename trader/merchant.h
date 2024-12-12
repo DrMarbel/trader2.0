@@ -3,36 +3,33 @@
 
 #include <string>
 #include <map>
+#include <vector>
 #include "good.h"
+#include <algorithm>
 
-// Merchant superclass
 class Merchant {
 public:
     std::string name;
-    std::map<std::string, Good> inventory; // On-hand inventory
-    int purse; // Available funds
+    std::map<std::string, Good> inventory;
+    int purse;
+    std::vector<std::string> tradeRegions;
+    std::string profession;
 
-    // Constructor
-    Merchant(std::string merchantName, int initialFunds);
+    Merchant(std::string merchantName, int initialFunds, std::vector<std::string> regions, std::string prof);
 
-    // Used for in-trade viewing
+    virtual ~Merchant() = default;
+
     virtual void displayGoods();
-
-    // Used for quick checking
     virtual void checkGoods();
-
-    // Method to add goods to the inventory
-    void addGood(const std::string& itemName, int price, int quantity);
-
-    // Buy goods from the merchant
+    void addGood(const Good& good, int quantity); // Takes a Good object
     bool buyGoods(Merchant& buyer, Merchant& seller, const std::string& goodName, int quantity);
-
-
-    // Sell goods to the merchant
     bool sellGoods(Merchant& seller, Merchant& buyer, const std::string& goodName, int quantity);
-
-
     std::string getName();
+
+    bool isRegionValid(const std::string& region) const; // const is important
 };
+
+// Declaration of getAvailableGoods (NOT the definition!)
+std::vector<Good> getAvailableGoods(const Merchant& merchant, const std::vector<Good>& allGoods);
 
 #endif // MERCHANT_H

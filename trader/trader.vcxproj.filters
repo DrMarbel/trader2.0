@@ -27,6 +27,9 @@
     <ClCompile Include="trader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="smith.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="merchant.h">
@@ -39,6 +42,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="trader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="smith.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
