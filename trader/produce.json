@@ -1,0 +1,11 @@
+{
+  "produce": {
+    {
+      "id": "apl",
+      "name": "Apple",
+      "desc": "A round fruit from a tree",
+      "base_price": 10,
+      "reg": "Grassland"
+    }
+  }
+}

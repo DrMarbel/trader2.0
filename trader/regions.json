@@ -1,0 +1,9 @@
+[
+    {
+    "name": "Grassland",
+    "aliases": [ "Prairie", "Steppe", "Pampa" ],
+    "description": "A large open area of grassland, with few or no trees.",
+    "characteristics": [ "Moderate rainfall", "Hot summers, cold winters", "Dominated by grasses" ],
+    "examples": [ "North American prairies", "Eurasian steppes", "South American pampas" ]
+  }
+]

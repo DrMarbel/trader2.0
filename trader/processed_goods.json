@@ -1,0 +1,11 @@
+{
+  "processed_goods": {
+    {
+      "id": "arrw",
+      "name": "Arrow",
+      "desc": "Pointy at one end",
+      "base_price": 15,
+      "reg": "Grassland"
+    }
+  }
+}

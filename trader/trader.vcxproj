@@ -142,8 +142,11 @@
     <ClInclude Include="trader.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="inventory.json" />
     <None Include="packages.config" />
+    <None Include="processed_goods.json" />
+    <None Include="produce.json" />
+    <None Include="raw_goods.json" />
+    <None Include="regions.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

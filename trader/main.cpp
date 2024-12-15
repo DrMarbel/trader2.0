@@ -4,7 +4,7 @@
 * Date Started: 12/07/24
 * 
 * Notes:
-* Dynamic Inventory Loading via JSON completed
+* 
 */
 
 #include <iostream>
@@ -130,7 +130,7 @@ std::vector<Good> loadGoodsFromJson(const std::string& filename) {
 int main() {
     std::cout << "Welcome to the Fantasy Trade Tycoon!\n";
 
-    std::vector<Good> loadedGoods = loadGoodsFromJson("inventory.json");
+    std::vector<Good> loadedGoods = loadGoodsFromJson("goods.json");
 
     if (loadedGoods.empty()) {
         std::cerr << "Failed to load goods. Exiting.\n";

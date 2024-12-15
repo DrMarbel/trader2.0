@@ -1,0 +1,11 @@
+{
+  "raw goods": {
+    {
+      "id": "raw_hny",
+      "namw": "Raw Honey",
+      "desc": "Thick, sticky, and sweet",
+      "base_price": 20,
+      "reg": "Grassland"
+    }
+  }
+}
